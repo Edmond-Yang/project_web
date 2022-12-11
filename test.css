@@ -1,0 +1,10 @@
+.draggable {
+    cursor: move;
+    user-select: none;
+}
+#list .draggable{
+    height:10vh;
+    border: 1px solid black;
+    width:100%;
+}
+
