@@ -1,0 +1,12 @@
+.logo{
+    width: 60px;
+    height: 60px;
+    margin: auto 0px;
+    margin-right: 20px;
+}
+
+.div-logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

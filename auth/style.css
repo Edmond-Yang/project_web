@@ -18,7 +18,8 @@ body {
 }
 
 .section-title {
-	font-size: 32px;
+	font-size: 30px;
+	font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
 	letter-spacing: 1px;
 	color: #fff;
 }
@@ -26,7 +27,7 @@ body {
 .forms {
 	display: flex;
 	align-items: flex-start;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
 .form-wrapper {
@@ -282,4 +283,12 @@ body {
 	background: #fbfdff;
 	box-shadow: inset 0 0 0 2px #a7e245;
 	transform: translateX(30%);
+}
+
+.btn-login:hover, .btn-signup:hover{
+	background-color: #cde6a4;
+}
+
+button{
+	cursor: pointer;
 }
