@@ -29,4 +29,17 @@ window.onload = function(){
     const value = storage.getter('user-email');
     if(value)
         $('#login-email').val(value);
+
+
+    // sign up
+    const form_signUp = $('#form-signup');
+    form_signUp.on('submit', function(event){
+        event.preventDefault();
+    })
+
+    // login
+    const form_login = $('#form-login');
+    form_login.on('submit', function(event){
+        event.preventDefault();
+    })
 } 

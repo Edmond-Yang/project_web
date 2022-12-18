@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+	font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+
+
+.block{
+    border-radius: 10px;
+    width: 50%;
+    height: 40%;
+    color: white;
+    margin: 50px auto;
+    text-align: center;
+
+    padding: 3px 20px;
+}
+
+p{
+    font-size: larger;
+}
+
+#success{
+    background-color: green;
+}
+
+#danger{
+    background-color: red;
+}
