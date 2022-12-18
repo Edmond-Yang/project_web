@@ -15,6 +15,7 @@ function validation_email(str){
         return true
 
     $('#message-signup').text('Enter a Valid Email Address')
+    $('#message-signup').css('color', 'red');
     return false
 }
 
@@ -23,6 +24,7 @@ function validation_password(str){
         return true
 
     $('#message-signup').text('Enter a Long Password')
+    $('#message-signup').css('color', 'red');
     return false
 }
 
