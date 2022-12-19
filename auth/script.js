@@ -45,13 +45,10 @@ window.onload = function(){
 
     // from local storage
     const email_value = storage.getter('user-email');
-    if(email_value)
-        $('#login-email').val(value);
-
-    const password_value = storage.getter('user-password');
-    if(password_value)
-        $('#login-password').val(value);
-
+    if(email_value){
+        $('#login-email').val(email_value);
+    }
+        
 
     // sign up
     const form_signUp = $('#form-signup');
@@ -82,7 +79,6 @@ window.onload = function(){
                     $('#signup-password-confirm').val('');
                     $('#login').trigger("click");
                     storage.setter('user-email', email);
-                    storage.setter('user-password', password);
                 }
                 else{
                     $('#message-signup').html(text);
@@ -112,7 +108,8 @@ window.onload = function(){
 
         $.post('authentication.php', {status: 'login', email: email, password: password, password_confirm:''}, function(text){
             if(text.includes('SUCCESS')){
-                window.location.href = 'http://localhost//project_web%20-%20複製/drag-and-drop/t3.html'
+                storage.setter('user-email', email);
+                window.location.href = 'http://localhost//project_web/drag-and-drop/t3.html';
             }
             else{
                 $('#message-login').html(text);
