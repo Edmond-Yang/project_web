@@ -4,19 +4,35 @@
     <title>
         drag and drop
     </title>
-    <!-- (A) LOAD CSS + JS -->
     <link rel="stylesheet" href="t3.css"/>
     <script src="t3.js"></script>
   </head>
   <body>
-    <!-- (B) THE LIST -->
-    <div id="sortlist">
-        <div contenteditable="true">First</div>
-        <div contenteditable="true">Second</div>
-        <div contenteditable="true">Third</div>
-        <div contenteditable="true">Forth</div>
-        <div contenteditable="true">Fifth</div>
-    </div>
+    <div class="top">
 
+    </div>
+    <div class="middle">
+      <div class="left" id="sortlist">
+      </div>
+      <div class="right" id="addlist">
+        <div>
+          <p>Insertion</p>
+        </div>
+        <div class="template" id="text-only">
+          <img class="text-icon"src="text_icon.png" width:538px height:348px>
+        </div>
+        <div class="template" id="image-only">
+          <img class="camera-icon"src="camera_icon.png" width:537px height:349px>
+        </div>
+        <div class="template" id="3">
+          <img class="camera-icon"src="camera_icon.png" width:676px height:514px>
+          <img class="text-icon"src="text_icon.png" width:832px height:290px>
+        </div>
+        <div class="template" id="4">
+          <img class="camera-icon"src="camera_icon.png" width:676px height:514px>
+          <img class="text-icon"src="text_icon.png" width:832px height:290px>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

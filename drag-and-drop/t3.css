@@ -1,29 +1,57 @@
-/* (A) LIST STYLES */
-.slist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+*{
+    font-family: arial, sans-serif;
+    box-sizing: border-box;
 }
-.slist div {
+.left{
+    width:70%;
+    background-color: #ffc49a;
+}
+.right{
+    width:30%;
+    background-color: #feffb4;
+}
+.middle{
+    display: flex;
+}
+.block {
     margin: 10px;
     padding: 15px;
     border: 1px solid #dfdfdf;
     background: #f5f5f5;
 }
-  
-  /* (B) DRAG-AND-DROP HINT */
-.slist div.hint {
+/* (B) DRAG-AND-DROP HINT */
+.hint {
     border: 1px solid #ffc49a;
     background: #feffb4;
 }
-.slist div.active {
+.active {
     border: 1px solid #ffa5a5;
     background: #ffe7e7;
 }
-  
-  /* (X) DOES NOT MATTER */
-*{
-    font-family: arial, sans-serif;
-    box-sizing: border-box;
+.block_end{
+    animation:changecolor 2s infinite;
 }
-  
+@keyframes changecolor {
+   0% { background: #feffb4; }
+  30%  { background: #fdff7b; }
+  50% { background: #f2f51c; }
+  80%  { background: #fdff7b; }
+  100% { background: #feffb4; }
+}
+img.camera-icon{
+    width:100px;
+    height:65px;
+    object-fit:contain;
+}
+img.text-icon{
+    width:100px;
+    height:65px;
+    object-fit: contain;
+}
+div.template{
+    background-color: aqua;
+    border:1px solid black;
+    height:20vh;
+}
+
+
