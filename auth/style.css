@@ -285,10 +285,19 @@ body {
 	transform: translateX(30%);
 }
 
-.btn-login:hover, .btn-signup:hover{
+.btn-login:hover {
 	background-color: #cde6a4;
+}
+.btn-signup:hover{
+	background-color: #a7e245;
+	color: white;
 }
 
 button{
 	cursor: pointer;
+}
+
+.message{
+	margin: 0px auto;
+	font-size: 8px;
 }
