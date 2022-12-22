@@ -1,0 +1,57 @@
+.top{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 100px;
+}
+
+.selfie{
+    margin: auto 0px;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.div-logo{
+    margin-top: 0px;
+}
+
+.user{
+    position: relative;
+    display: inline-block;
+    margin: auto 0px;
+}
+
+.user-list{
+    display: none;
+    position: absolute;
+    padding: 0px 0px;
+    margin-top: 5px;
+    margin-left: -80px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.user-list li{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    list-style: none;
+    text-align: center;
+}
+
+.user-list .need-hover{
+    cursor: pointer;
+}
+
+.user-list .need-hover:hover{
+    background-color: #ddd;
+}
