@@ -17,7 +17,11 @@ class Tool{
 
     get_item(key){
 
-        if(!this.list.has(key)){
+        // if(!this.list.has(key)){
+        //     console.log('key not set');
+        //     return;
+        // }
+        if(!(key in this.list)){
             console.log('key not set');
             return;
         }
@@ -25,7 +29,7 @@ class Tool{
         const info = this.list[key];
 
         if(info['type'] == 'int'){
-            return this.list[key] ++;
+            return info["value"] ++;
         }
         else if(info['type'] == 'rand'){
             return Math.random() * (info['range'][1] - info['range'][0]+1) + info['range'][0];
