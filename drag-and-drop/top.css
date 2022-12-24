@@ -55,3 +55,37 @@ a{
 .user-list .need-hover:hover{
     background-color: #ddd;
 }
+
+.tool-bar{
+    display: flex;
+    justify-content: center;
+
+    border: 1px 0px 1px 0px;
+}
+
+.tool-btn{
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.tool-btn:hover{
+    background-color: rgb(194, 194, 194);
+}
+
+#delete{
+    margin-left: 15px;
+    border-radius: 7px;
+    border: 0px;
+
+    color: white;
+    background-color: red;
+}
+
+#delete:hover{
+    background-color: rgb(255, 132, 132);
+}
