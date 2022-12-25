@@ -26,3 +26,4 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 2. change image source
 3. t3 php
 4. upload image to server
+5. template 
