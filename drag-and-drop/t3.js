@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   add_template_event();
   tool = new Tool();
   tool.set_item_to_int("block_id");
-  
+
 });
 function add_template_event(){
 
@@ -23,10 +23,16 @@ function add_template_event(){
       current = blocks_end;
       blocks_end.classList.add("block_end");
       document.getElementById("sortlist").appendChild(blocks_end);
+      // blocks_end.ondragstart = (ev) =>{
+      //   ev.preventDefault();
+      // };
+      blocks_end.draggable = "true";
       blocks_end.ondragstart = (ev) =>{
-        ev.preventDefault();
-      };
-
+        blocks_end.classList.add("block_move");
+      }
+      blocks_end.ondragend = (ev) =>{
+        blocks_end.classList.remove("block_move");
+      }
       add_block_event();
 
       let blocks = document.getElementsByClassName("block");
@@ -64,10 +70,24 @@ function add_block_event(){
     }
     i.ondrop = (ev) =>{
       ev.preventDefault();
+
       let current = document.getElementsByClassName("block_end")[0];
       let items = document.getElementsByClassName("block");
+      if (!current){
+        current = document.getElementsByClassName("block_move")[0];
+        let currentpos = -1, droppedpos = -1;
+        for (let it=0; it<items.length; it++) {
+          if (current == items[it]) { currentpos = it; }
+          if (i == items[it]) { droppedpos = it; }
+        }
 
-      if (i != current) {
+        if (currentpos < droppedpos) {
+          i.parentNode.insertBefore(current, i.nextSibling);
+        } else {
+          i.parentNode.insertBefore(current, i);
+        }
+      }
+      else if (i != current) {
         let currentpos = -1, droppedpos = -1;
         for (let it=0; it<items.length; it++) {
           if (current == items[it]) { currentpos = it; }
