@@ -70,7 +70,13 @@
             echo "Enter Right Email or Password";
 
     }
-    
+
+    $query = "CREATE TABLE `" . $email ."` ( id INT NOT NULL AUTO_INCREMENT , name VARCHAR(100) NOT NULL, html LONGTEXT NOT NULL, modify_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY( id ) )";
+
+    if (!($query = mysqli_query($database, $query))) {
+        die("CREATION failed.");
+    }
+
     mysqli_close($database);
     
 ?>

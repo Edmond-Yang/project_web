@@ -66,13 +66,14 @@ window.onload = function(){
             }
             $.post('authentication.php', {status: 'signup', email: email, password: password, password_confirm:confirmed_password}, function(text){
                 if(text.includes('xampp')){
-                    alert('Error Occur, Please Contact Our Engineer');
+                    alert('Error Occur. Please Contact Our Engineer');
                     return;
                 }
                 
 
                 if(text.includes('SUCCESS')){
-                    $('#message-login').html(text);
+                    console.log(text);
+                    $('#message-login-div').html('<p id="message-login" class="message">'+text + '</p>');
                     $('#message-login').css('color', 'green');
                     $('#signup-email').val('');
                     $('#signup-password').val('');
@@ -93,29 +94,29 @@ window.onload = function(){
     })
 
     // login
-    const form_login = $('#form-login');
-    form_login.on('submit', function(event){
-        console.log('in')
-        event.preventDefault();
+    // const form_login = $('#form-login');
+    // form_login.on('submit', function(event){
+    //     console.log('in')
+    //     event.preventDefault();
 
-        const email = $('#login-email').val();
-        const password = $('#login-password').val();
+    //     const email = $('#login-email').val();
+    //     const password = $('#login-password').val();
 
-        if(email.length == 0 || password.length == 0){
-            $('#message-login').html('Please Enter Your Email and Password');
-            $('#message-login').css('color', 'red');
-        }
+    //     if(email.length == 0 || password.length == 0){
+    //         $('#message-login').html('Please Enter Your Email and Password');
+    //         $('#message-login').css('color', 'red');
+    //     }
 
-        $.post('authentication.php', {status: 'login', email: email, password: password, password_confirm:''}, function(text){
-            if(text.includes('SUCCESS')){
-                storage.setter('user-email', email);
-                window.location.href = 'http://localhost/project_web/creation_project/index.php?email=' + email.substring(0, email.indexOf('@'));
-            }
-            else{
-                $('#message-login').html(text);
-                $('#message-login').css('color', 'red');
-            }
-        })
+    //     $.post('authentication.php', {status: 'login', email: email, password: password, password_confirm:''}, function(text){
+    //         if(text.includes('SUCCESS')){
+    //             storage.setter('user-email', email);
+    //             window.location.href = 'http://localhost/project_web/creation_project/index.php?email=' + email.substring(0, email.indexOf('@'));
+    //         }
+    //         else{
+    //             $('#message-login').html(text);
+    //             $('#message-login').css('color', 'red');
+    //         }
+    //     })
 
-    })
+    // })
 } 

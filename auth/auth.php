@@ -23,18 +23,26 @@
                         Login
                         <span class="underline"></span>
                     </button>
-                    <form class="form form-login" id="form-login">
+                    <form class="form form-login" id="form-login" action="../creation_project/index.php" method="POST">
                         <fieldset>
                             <div class="input-block">
                                 <label for="login-email">E-mail</label>
-                                <input id="login-email" type="email" required>
+                                <input id="login-email" type="email" name="email" required>
                             </div>
                             <div class="input-block" style="margin-bottom: 5px;">
                                 <label for="login-password">Password</label>
-                                <input id="login-password" type="password" required>
+                                <input id="login-password" type="password" name="password" required>
                             </div>
-                            <div>
-                                <p id="message-login" class="message"></p>
+                            <div id="message-login-div">
+                                <?php 
+                                if (isset($_POST['error_msg'])){
+                                    echo '<p id="message-login" class="message">';
+                                    echo $_POST['error_msg'];
+                                    echo '</p>';
+                                    echo "<script>$('#message-login').css('color', 'red')</script>";
+                                }
+                                    
+                                ?>
                             </div>
                         </fieldset>
                         <button id="btn-login" type="submit" class="btn-login">Login</button>
