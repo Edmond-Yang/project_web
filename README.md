@@ -15,8 +15,7 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 
 ### To Do List
 1. link creation to t3
-2. modify project name
-3. insertion template
+2. insertion template
 
 ### David to do
 1. delete block
