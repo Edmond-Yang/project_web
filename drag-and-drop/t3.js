@@ -107,12 +107,17 @@ function add_block_event(){
         
         current.id = tool.get_item("block_id")+"_textonly";
         current.contentEditable = "true";
+        initial_btn_function_textonly();
       }
       else if(ev.dataTransfer.getData("type")=="image-only"){
         let input = document.createElement("input");
         input.type = "file";
         input.accept = "image/*";
         input.name = "img";
+        current.appendChild(input);
+        var num = tool.get_item("block_id")
+        current.id = num +"_blockonly";
+
         input.addEventListener("change", function() {
 
           const reader = new FileReader()
@@ -133,21 +138,37 @@ function add_block_event(){
             image_child_l.classList.add("image_block");
         
             image.width = "200";
+            console.log(image.height);
             image.class = "input_img";
+            image.id="img_" + num + '_blockonly';
             image.src = reader.result;
             image_child_l.appendChild(image);
             image_parent.appendChild(image_child_l);
             parent.appendChild(image_parent);
 
+            initial_btn_function_imgonly(num+'_blockonly');
+
             // add_image_event(image_parent);
           })
         
           reader.readAsDataURL(this.files[0])
+          initial_btn_function_imgonly(num+'_blockonly');
+
         
         })
-        current.appendChild(input);
-        current.id = tool.get_item("block_id")+"_blockonly";
+
+        initial_btn_function_imgonly(num+'_blockonly');
+        
       }
+
+      current.addEventListener('click', function(){
+        if(this.id.includes('textonly')){
+          initial_btn_function_textonly();
+        }
+        else if(this.id.includes('blockonly')){
+          initial_btn_function_imgonly(this.id);
+        }
+      })
     }
   }
 }

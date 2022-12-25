@@ -89,3 +89,7 @@ a{
 #delete:hover{
     background-color: rgb(255, 132, 132);
 }
+
+.img-value-btn{
+    width: 70px;
+}
