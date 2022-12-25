@@ -35,7 +35,7 @@
             die();
         }
 
-        $query = "INSERT INTO account (email, password, str1, str2) VALUES ('" . $email . "', '" . $password . "','','')";
+        $query = "INSERT INTO account (email, password) VALUES ('" . $email . "', '" . $password . "')";
         if (!($query = mysqli_query($database, $query))) {
             die("INSERTION failed.");
         }

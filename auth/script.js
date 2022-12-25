@@ -109,7 +109,7 @@ window.onload = function(){
         $.post('authentication.php', {status: 'login', email: email, password: password, password_confirm:''}, function(text){
             if(text.includes('SUCCESS')){
                 storage.setter('user-email', email);
-                window.location.href = 'http://localhost//project_web/drag-and-drop/t3.html';
+                window.location.href = 'http://localhost/project_web/creation_project/index.php?email=' + email.substring(0, email.indexOf('@'));
             }
             else{
                 $('#message-login').html(text);

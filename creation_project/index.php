@@ -1,8 +1,15 @@
+<?php 
+    if(!isset($_GET['email'])){
+        header('http://localhost/project_web/auth/auth.html');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title> &lt;username&gt; | WEB DREAMER </title>
+        <title> <?php echo $_GET['email'] ?> | WEB DREAMER </title>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../logo/logo.css">
         <link rel="stylesheet" href="./style.css">
@@ -22,8 +29,8 @@
             <div class="user">
                 <img src="../selfie_img/0.png" class="selfie" id="user">
                 <ul class="user-list">
-                    <li>Hi <strong>username</strong></li>
-                    <li class="need-hover">LOG OUT</li>
+                    <li>Hi <strong><?php echo $_GET['email'] ?></strong></li>
+                    <li class="need-hover" id="logout">LOG OUT</li>
                 </ul>
             </div>
         </div>
