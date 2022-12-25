@@ -7,4 +7,10 @@ window.onload = function(){
             $('.user-list').css('display', 'none');
 
     })
+
+    $('#logout').click(function(){
+        window.location.href = 'http://localhost/project_web/auth/auth.php';
+    })
+
+    
 }

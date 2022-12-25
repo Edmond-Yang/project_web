@@ -60,7 +60,7 @@ a{
     display: flex;
     justify-content: center;
 
-    height: 50px;
+    height: 30px;
 
 }
 
@@ -92,5 +92,31 @@ a{
 }
 
 .img-value-btn{
-    width: 70px;
+    width: 40px;
+    height: 30px;
+}
+
+#project-name{
+    border: 0px;
+    border-bottom: 1px solid black;
+    width: 100px;
+    height: 40px;
+
+    margin-top: 10px;
+    margin-left: 8px;
+
+    padding-top: 20px;
+
+    font-size: large;
+}
+
+input:focus-visible{
+    outline: none;
+} 
+
+.message{
+    color: grey;
+    font-size: 8px;
+    margin-top: 35px;
+    margin-left: 8px;
 }

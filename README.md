@@ -15,11 +15,8 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 
 ### To Do List
 1. link creation to t3
-2. mysql creation
-3. log out
-4. modify project name
-5. project name, id, html()
-6. insertion template
+2. modify project name
+3. insertion template
 
 ### David to do
 1. delete block
