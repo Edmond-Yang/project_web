@@ -9,4 +9,16 @@ window.onload = function(){
             $('.user-list').css('display', 'none');
 
     })
+
+    document.querySelectorAll('.simple-btn').forEach(function(node){
+        node.addEventListener('click', function(){
+            document.execCommand(node.id, false, null);
+        })
+    })
+
+    document.querySelectorAll('.value-btn').forEach(function(node){
+        node.addEventListener('change', function(){
+            document.execCommand(node.id, false, node.value)
+        })
+    })
 }

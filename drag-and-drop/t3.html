@@ -32,31 +32,33 @@
     <div class="tool-bar" id="tool-bar">
       
       <!-- text format -->
-      <button class="tool-btn"><strong>B</strong></button>
-      <button class="tool-btn"><i>I</i></button>
-      <button class="tool-btn"><u>U</u></button>
-      <button class="tool-btn"><del>del</del></button>
+      <button class="tool-btn simple-btn" id="bold"><strong>B</strong></button>
+      <button class="tool-btn simple-btn" id="italic"><i>I</i></button>
+      <button class="tool-btn simple-btn" id="underline"><u>U</u></button>
+      <button class="tool-btn simple-btn" id="strikethrough"><del>del</del></button>
 
       <!-- align -->
-      <button class="tool-btn"><img src="./align-left.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
-      <button class="tool-btn"><img src="./align-center.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
-      <button class="tool-btn"><img src="./align-right.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
+      <button class="tool-btn simple-btn" id="justifyLeft"><img src="./align-left.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
+      <button class="tool-btn simple-btn" id="justifyCenter"><img src="./align-center.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
+      <button class="tool-btn simple-btn" id="justifyRight"><img src="./align-right.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>
 
       <!-- font -->
-      <select >
-        <option>10</option>
-        <option>15</option>
-        <option>20</option>
-        <option>25</option>
-        
+      <select class="value-btn" id="fontSize">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
       </select>
       <p style="margin: auto 0px; margin-left: 5px; margin-right: 20px;">px</p>
 
       <p style="margin: auto 0px; margin-right: 5px;"><strong>TEXT</strong></p>
-      <input type="color" style="margin-right: 20px;">
+      <input class="value-btn" id="foreColor" type="color" style="margin-right: 20px;">
 
       <p style="margin: auto 0px; margin-right: 5px;"><strong>HIGHLIGHT</strong></p>
-      <input type="color">
+      <input class="value-btn" id="backColor" type="color">
 
       <button id="delete" style="margin-left: 25px;">DELETE</button>
 
