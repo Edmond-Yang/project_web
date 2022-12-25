@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   add_template_event();
   tool = new Tool();
   tool.set_item_to_int("block_id");
+  
 });
 function add_template_event(){
 
@@ -84,7 +85,7 @@ function add_block_event(){
 
       if(ev.dataTransfer.getData("type")=="text-only") {
         
-        current.id = tool.get_item("block_id");
+        current.id = tool.get_item("block_id")+"_textonly";
         current.contentEditable = "true";
       }
       else if(ev.dataTransfer.getData("type")=="image-only"){
@@ -125,7 +126,7 @@ function add_block_event(){
         
         })
         current.appendChild(input);
-        current.id = tool.get_item("block_id");
+        current.id = tool.get_item("block_id")+"_blockonly";
       }
     }
   }
