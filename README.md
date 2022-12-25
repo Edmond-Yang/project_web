@@ -19,3 +19,10 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 3. log out
 4. modify project name
 5. project name, id, html()
+6. insertion template
+
+### David to do
+1. delete block
+2. change image source
+3. t3 php
+4. upload image to server

@@ -138,7 +138,7 @@ function add_block_event(){
             image_child_l.classList.add("image_block");
         
             image.width = "200";
-            console.log(image.height);
+
             image.class = "input_img";
             image.id="img_" + num + '_blockonly';
             image.src = reader.result;
