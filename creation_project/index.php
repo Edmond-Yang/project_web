@@ -46,12 +46,13 @@
     }
 
     $find = false;
-    $sql = "SELECT email, password FROM account";
+    $sql = "SELECT email, password, image FROM account";
     $result = mysqli_query($database, $sql);
 
     while($row = mysqli_fetch_assoc($result)) {
         if($email == $row['email'] && $password == $row['password']){
             $find = true;   
+            $image = $row['image'];
             break;
         }
     }
@@ -85,6 +86,7 @@
                             <form method="POST" action="">
                                 <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
                                 <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
+                                <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                                 <td><button class="project">' . $row['name'] . '</button></td>
                             </form>
                             <td>' . $row['modify_time'] . '</td>
@@ -101,12 +103,14 @@
                             <form method="POST" action="">
                                 <input type="text" style="display: none;"  value="' . $_POST['email'] .'" name="email">
                                 <input type="text" style="display: none;"  value="' . $row['id'] .'" name="project">
+                                <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                                 <td><button class="project">' . $row['name'] . '</button></td>
                             </form>
                             <td>' . $row['modify_time'] . '</td>
                             <form>
                                 <input type="text" style="display: none;" id="email-user-' . $row['id'] .'" value="' . $_POST['email'] .'" name="email">
                                 <input type="text" style="display: none;" id="project-user-' . $row['id'] .'" value="' . $row['id'] .'" name="project">
+                                <input type="text" style="display: none;" id="image" value="' . $GLOBALS['image'] .'" name="image">
                                 <td><button id="project-deletion-' . $row['id'] . '" class="delete">刪除</button></td>
                             </form>
                         </tr>';
@@ -118,7 +122,8 @@
                             node.addEventListener("click", function(event){
                                 event.preventDefault();
                                 var id = node.id.split("-")[2];
-                                $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val()},function(text){
+                                consol.log($("#image").val());
+                                $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(),"image": ' . $GLOBALS['image'] .'},function(text){
                                     if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
                                         alert(text);
                                         return;
@@ -155,7 +160,7 @@
                 </div>
             </a>
             <div class="user">
-                <img src="../selfie_img/0.png" class="selfie" id="user">
+                <img src="../selfie_img/<?php echo $image; ?>.png" class="selfie" id="user">
                 <ul class="user-list">
                     <li>Hi <strong><?php $email = explode('@', $_POST['email']); echo $email[0] ?></strong></li>
                     <li class="need-hover" id="logout">LOG OUT</li>
@@ -172,7 +177,7 @@
             <?php
                 echo '<script> $(\'#create\').click(function(){
                     event.preventDefault();
-                    $.post(\'creation.php\', {email:\'' . $_POST['email'] .'\'}, function(text){
+                    $.post(\'creation.php\', {email:\'' . $_POST['email'] .'\', image: ' . $image .'}, function(text){
                         
                             $(\'#project\').html(text)
                             // convert to t3.html ...

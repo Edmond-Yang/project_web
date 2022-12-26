@@ -1,9 +1,11 @@
 <?php 
-    if(!isset($_POST['email']) || !isset($_POST['project'])){
+    if(!isset($_POST['email']) || !isset($_POST['project']) || !isset($_POST['image'])){
         echo 'get away';
         die();
     }
 
+    $image = $_POST['image'];
+    
     if (!($database = mysqli_connect("localhost", "admin", "WEB#dreamer$1104&1126", "web_dreamer"))) {
         die("Connection failed.");
     }
@@ -33,6 +35,7 @@
                 <form method="POST" action="">
                     <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
                     <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
+                    <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                     <td><button class="project">' . $row['name'] . '</button></td>
                 </form>
                 <td>' . $row['modify_time'] . '</td>
@@ -49,6 +52,7 @@
                     <form method="POST" action="">
                     <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
                     <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
+                    <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                     <td><button class="project">' . $row['name'] . '</button></td>
                     </form>
                     <td>' . $row['modify_time'] . '</td>
@@ -67,7 +71,7 @@
                     node.addEventListener("click", function(event){
                         event.preventDefault();
                         var id = node.id.split("-")[2];
-                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val()},function(text){
+                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(), "image": ' . $image .'},function(text){
                             if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
                                 alert(text);
                                 return;

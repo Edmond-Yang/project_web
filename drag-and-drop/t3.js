@@ -113,6 +113,12 @@ function add_block_event(){
         current.contentEditable = "true";
         
         initial_btn_function_textonly(current.id);
+
+        current.addEventListener('paste', function(e){
+            e.preventDefault();
+            var text = (e.originalEvent || e).clipboardData.getData('text/plain');
+            document.execCommand("insertHTML", false, text);
+        })
       }
       else if(ev.dataTransfer.getData("type")=="image-only"){
         let input = document.createElement("input");

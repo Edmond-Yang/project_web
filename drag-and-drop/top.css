@@ -98,7 +98,8 @@ a{
 
 #project-name{
     border: 0px;
-    border-bottom: 1px solid black;
+    color: black;
+    border-bottom: 2px solid black;
     width: 100px;
     height: 40px;
 
@@ -107,7 +108,11 @@ a{
 
     padding-top: 20px;
 
-    font-size: large;
+    font-size: 25px;
+}
+
+#project-name:focus{
+    color: grey;
 }
 
 input:focus-visible{
