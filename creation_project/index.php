@@ -85,6 +85,7 @@
                     echo '<tr>
                             <form method="POST" action="">
                                 <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
+                                <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                                 <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
                                 <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                                 <td><button class="project">' . $row['name'] . '</button></td>
@@ -102,6 +103,7 @@
                     echo '<tr>
                             <form method="POST" action="">
                                 <input type="text" style="display: none;"  value="' . $_POST['email'] .'" name="email">
+                                <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                                 <input type="text" style="display: none;"  value="' . $row['id'] .'" name="project">
                                 <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                                 <td><button class="project">' . $row['name'] . '</button></td>
@@ -123,7 +125,7 @@
                                 event.preventDefault();
                                 var id = node.id.split("-")[2];
                                 consol.log($("#image").val());
-                                $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(),"image": ' . $GLOBALS['image'] .'},function(text){
+                                $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(),"image": ' . $GLOBALS['image'] .', "password": ' . $_POST['password'] . '},function(text){
                                     if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
                                         alert(text);
                                         return;
@@ -153,12 +155,14 @@
     <body>
         
         <div class="header">
-            <a href="../creation_project/index.php">
-                <div class="div-logo">
+            <form method="POST" action="../creation_project/index.php">
+                <input type="text" style="display: none" value="<?php echo $_POST['email'] ?>" name="email">
+                <input type="text" style="display: none" value="<?php echo $_POST['password'] ?>" name="password">
+                <button style="border: 0px; background-color: transparent; display: flex; cursor:pointer;">
                     <img src="../logo/icon.PNG" class="logo">
                     <h1 class="title">WEB DREAMER</h1>
-                </div>
-            </a>
+                </button>
+            </form>
             <div class="user">
                 <img src="../selfie_img/<?php echo $image; ?>.png" class="selfie" id="user">
                 <ul class="user-list">
@@ -177,7 +181,7 @@
             <?php
                 echo '<script> $(\'#create\').click(function(){
                     event.preventDefault();
-                    $.post(\'creation.php\', {email:\'' . $_POST['email'] .'\', image: ' . $image .'}, function(text){
+                    $.post(\'creation.php\', {email:\'' . $_POST['email'] .'\', image: ' . $image .', "password": ' . $_POST['password'] . '}, function(text){
                         
                             $(\'#project\').html(text)
                             // convert to t3.html ...

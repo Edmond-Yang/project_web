@@ -1,5 +1,5 @@
 <?php 
-    if(!isset($_POST['email']) || !isset($_POST['project']) || !isset($_POST['image'])){
+    if(!isset($_POST['email']) || !isset($_POST['project']) || !isset($_POST['image'])|| !isset($_POST['password'])){
         echo 'get away';
         die();
     }
@@ -34,6 +34,7 @@
         echo '<tr>
                 <form method="POST" action="">
                     <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
+                    <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                     <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
                     <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                     <td><button class="project">' . $row['name'] . '</button></td>
@@ -51,6 +52,7 @@
             echo '<tr>
                     <form method="POST" action="">
                     <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
+                    <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                     <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
                     <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
                     <td><button class="project">' . $row['name'] . '</button></td>
@@ -71,7 +73,7 @@
                     node.addEventListener("click", function(event){
                         event.preventDefault();
                         var id = node.id.split("-")[2];
-                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(), "image": ' . $image .'},function(text){
+                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(), "image": ' . $image .', "password": ' . $_POST['password'] . '},function(text){
                             if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
                                 alert(text);
                                 return;
