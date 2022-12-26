@@ -1,15 +1,14 @@
 <?php 
-
-    if(!isset($_POST['email'])){
-        header('Location: http://localhost/project_web/creation_project/index.php');
-        exit();
+    if(!isset($_POST['email']) || !isset($_POST['project'])){
+        echo 'get away';
+        die();
     }
-        
+
     if (!($database = mysqli_connect("localhost", "admin", "WEB#dreamer$1104&1126", "web_dreamer"))) {
         die("Connection failed.");
     }
 
-    $query = "INSERT INTO `" . $_POST['email'] . "` (name, html) VALUES ('default', '')";
+    $query = "DELETE FROM `" . $_POST['email'] . "` WHERE `id`=" . $_POST['project'];
     if (!($query = mysqli_query($database, $query))) {
         die("INSERTION failed.");
     }
@@ -79,5 +78,4 @@
                     })
                 })
             </script>';
-
 ?>

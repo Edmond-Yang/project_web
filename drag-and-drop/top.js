@@ -159,5 +159,13 @@ window.onload = function(){
 
     })
 
+    $('#project-name').change(function(){
+        // post to save use email 
+    })
+
+    $('#logout').click(function(){
+        window.location.href = 'http://localhost/project_web/auth/auth.php';
+    })
+
     
 }
