@@ -1,4 +1,3 @@
-
 <?php
     $situation = $_POST['status'];
     $email =  $_POST["email"];

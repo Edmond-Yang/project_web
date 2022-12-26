@@ -26,7 +26,7 @@ a{
     margin-top: 0px;
 }
 
-button{
+#create{
     position: relative;
     bottom: 40px;
     left: 15%;
@@ -43,7 +43,7 @@ button{
     border-radius: 10px;
 }
 
-button:hover{
+#create:hover{
     background-color: #00007c;
 }
 
@@ -150,10 +150,24 @@ table{
     position: relative;
     top: 0px;
     left: 0px;
+
+    border: 0px;
     border-radius: 5px;
     background-color: red;
+    color: white;
 }
 
 .delete:hover{
     background-color: rgb(255, 120, 120);
+}
+
+.project{
+    border: 0px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.project:hover{
+    text-decoration: underline;
 }
