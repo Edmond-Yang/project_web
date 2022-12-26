@@ -16,6 +16,10 @@ function add_template_event(){
         ev.dataTransfer.setData("type","text-only");
       else if(i.id=="image-only")
         ev.dataTransfer.setData("type","image-only");
+      else if(i.id=="image-text")
+        ev.dataTransfer.setData("type","image-text");
+      else if(i.id=="text-image")
+        ev.dataTransfer.setData("type","text-image");
 
       var blocks_end = document.createElement("div");
 
@@ -102,12 +106,13 @@ function add_block_event(){
       }
       current.classList.remove("block_end");
       i.classList.remove("active");
-
+      let num = tool.get_item("block_id");
       if(ev.dataTransfer.getData("type")=="text-only") {
         
-        current.id = tool.get_item("block_id")+"_textonly";
+        current.id = num+"_textonly";
         current.contentEditable = "true";
-        initial_btn_function_textonly();
+        
+        initial_btn_function_textonly(current.id);
       }
       else if(ev.dataTransfer.getData("type")=="image-only"){
         let input = document.createElement("input");
@@ -115,8 +120,7 @@ function add_block_event(){
         input.accept = "image/*";
         input.name = "img";
         current.appendChild(input);
-        var num = tool.get_item("block_id")
-        current.id = num +"_blockonly";
+        current.id = num +"_imageonly";
 
         input.addEventListener("change", function() {
 
@@ -133,45 +137,187 @@ function add_block_event(){
             let image_parent = document.createElement("div");
             let image_child_l = document.createElement("div");
             
-
             image_parent.classList.add("block_image");
             image_child_l.classList.add("image_block");
         
             image.width = "200";
 
             image.class = "input_img";
-            image.id="img_" + num + '_blockonly';
+            image.id="img_" + num + '_imageonly';
             image.src = reader.result;
             image_child_l.appendChild(image);
             image_parent.appendChild(image_child_l);
             parent.appendChild(image_parent);
 
-            initial_btn_function_imgonly(num+'_blockonly');
+            initial_btn_function_imgonly(num+'_imageonly');
 
             // add_image_event(image_parent);
           })
         
           reader.readAsDataURL(this.files[0])
-          initial_btn_function_imgonly(num+'_blockonly');
-
-        
+          initial_btn_function_imgonly(num+'_imageonly');
         })
 
-        initial_btn_function_imgonly(num+'_blockonly');
+        initial_btn_function_imgonly(num+'_imageonly');
+      }
+      else if(ev.dataTransfer.getData("type")=="image-text"){
+        current.id = num +"_imageonly";
+
+        let text_block = document.createElement("div");
+        text_block.id = num + "_text";
+        text_block.contentEditable = "true";
+        text_block.classList.add("block_text");
+        text_block.ondragstart = (ev)=>{
+          ev.preventDefault();
+        }
+        text_block.addEventListener("click",function(){
+          initial_btn_function_textonly(current.id);
+          
+        })
+        //initial_btn_function_text();
+
+        let input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.name = "img";
+        current.appendChild(input);
+
+        input.addEventListener("change", function() {
+
+          const reader = new FileReader()
+        
+          reader.addEventListener("load", () => {
+            //document.querySelector("#image").src = reader.result
+            let parent = input.parentElement;
+            parent.removeChild(input);
+            let image = document.createElement("img");
+            image.ondragstart = (ev) =>{
+              ev.preventDefault();
+            }
+            let image_parent = document.createElement("div");
+            let image_child_l = document.createElement("div");
+            
+            image_parent.classList.add("block_image");
+            image_child_l.classList.add("image_block");
+            // image_parent.id = num + "_image";
+
+            image.width = "200";
+            image.class = "input_img";
+            image.id="img_" + num + '_imageonly';
+            image.src = reader.result;
+            image_child_l.appendChild(image);
+            image_parent.appendChild(image_child_l);
+
+            if(parent.children.length > 0)
+              parent.insertBefore(image_parent,parent.children[0]);
+            else
+              parent.appendChild(image_parent);
+
+            image_parent.addEventListener("click",function(){
+              initial_btn_function_imgonly(num+'_imageonly');
+            })
+
+            initial_btn_function_imgonly(num+'_imageonly');
+            // add_image_event(image_parent);
+          })
+        
+          reader.readAsDataURL(this.files[0])
+          initial_btn_function_imgonly(num+'_imagetext');
+
+        })
+
+        //initial_btn_function_imgonly(num+'_imageonly');
+        current.classList.add("image_text");
+        current.appendChild(text_block);
         
       }
+      else if(ev.dataTransfer.getData("type")=="text-image"){
+        current.id = num +"_imageonly";
 
+        let text_block = document.createElement("div");
+        text_block.id = num + "_text";
+        text_block.contentEditable = "true";
+        text_block.classList.add("block_text");
+        text_block.ondragstart = (ev)=>{
+          ev.preventDefault();
+        }
+        text_block.addEventListener("click",function(){
+          initial_btn_function_textonly(current.id);
+          
+        })
+        current.appendChild(text_block);
+        //initial_btn_function_text();
+
+        let input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.name = "img";
+        current.appendChild(input);
+
+        input.addEventListener("change", function() {
+
+          initial_btn_function_imgonly(num+'_imageonly');
+          const reader = new FileReader()
+          
+          reader.addEventListener("load", () => {
+            //document.querySelector("#image").src = reader.result
+            let parent = input.parentElement;
+            parent.removeChild(input);
+            let image = document.createElement("img");
+            image.ondragstart = (ev) =>{
+              ev.preventDefault();
+            }
+            let image_parent = document.createElement("div");
+            let image_child_l = document.createElement("div");
+            
+            image_parent.classList.add("block_image");
+            image_child_l.classList.add("image_block");
+
+            image.width = "200";
+            image.class = "input_img";
+            image.id="img_" + num + '_imageonly';
+            image.src = reader.result;
+            image_child_l.appendChild(image);
+            image_parent.appendChild(image_child_l);
+
+            parent.appendChild(image_parent);
+
+            image_parent.addEventListener("click",function(){
+              initial_btn_function_imgonly(num+'_imageonly');
+            })
+            // add_image_event(image_parent);
+          })
+        
+          reader.readAsDataURL(this.files[0])
+          initial_btn_function_imgonly(num+'_imagetext');
+
+        })
+
+        //initial_btn_function_imgonly(num+'_imageonly');
+        current.classList.add("image_text");
+
+      }
       current.addEventListener('click', function(){
         if(this.id.includes('textonly')){
-          initial_btn_function_textonly();
+          initial_btn_function_textonly(current.id);
         }
-        else if(this.id.includes('blockonly')){
+        else if(this.id.includes('imageonly') && document.getElementById(this.id).children.length <= 1){
           initial_btn_function_imgonly(this.id);
         }
       })
     }
   }
 }
+// if(document.getElementById(this.id).children.length <= 1)
+            
+// else if(document.getElementById(this.id).children.length > 1){
+//   initial_btn_function_imgonly(this.id);
+//   console.log(num+"_text");
+//   console.log(document.getElementById(num+"_text"));
+//   document.getElementById(num+"_text").addEventListener("click",function(){
+//     initial_btn_function_textonly();
+//   })
+// }
 // function add_image_event(node){
 
 //   let current = node.getElementsByClassName("image_block")[0];

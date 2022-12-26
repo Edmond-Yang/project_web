@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 ### problem
 1. save image to server
 2. plain text paste
-
+3. adjustable distance between image and text
 
 ### To Do List
 1. link creation to t3
@@ -22,8 +22,7 @@ https://user-images.githubusercontent.com/62778632/208308124-928e771b-df15-4251-
 6. insertion template
 
 ### David to do
-1. delete block
+
 2. change image source
 3. t3 php
 4. upload image to server
-5. template 
