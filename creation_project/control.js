@@ -1,9 +1,4 @@
 window.onload = function(){
-
-    $('body').on('click', function(){
-        if($('.user-list').css('display') == 'block')
-            $('.user-list').css('display', 'none');
-    })
     
     $('#user').on('click', function(){
         
