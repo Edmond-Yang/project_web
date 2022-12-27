@@ -1,5 +1,7 @@
 
 window.onload = function(){
+
+    fresh_project();
     
     $('#user').on('click', function(){
         
@@ -12,6 +14,11 @@ window.onload = function(){
 
     $('#logout').click(function(){
         window.location.href = 'http://localhost/project_web/auth/auth.php';
+    })
+
+    $('#logo').click(function(event){
+        event.preventDefault();
+        fresh_project();
     })
 
     

@@ -97,10 +97,8 @@
     <body>
         
         <div class="header">
-            <form method="POST" action="../creation_project/index.php">
-                <input type="text" style="display: none" value="<?php echo $_POST['email'] ?>" name="email">
-                <input type="text" style="display: none" value="<?php echo $_POST['password'] ?>" name="password">
-                <button style="border: 0px; background-color: transparent; display: flex; cursor:pointer;">
+            <form>
+                <button style="border: 0px; background-color: transparent; display: flex; cursor:pointer;" id="logo">
                     <img src="../logo/icon.PNG" class="logo">
                     <h1 class="title">WEB DREAMER</h1>
                 </button>

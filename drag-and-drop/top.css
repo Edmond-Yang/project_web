@@ -1,3 +1,7 @@
+body{
+    margin: 0px 0px;
+}
+
 .top{
     display: flex;
     justify-content: space-between;
@@ -60,8 +64,14 @@ a{
     display: flex;
     justify-content: center;
 
-    height: 30px;
+    height: 40px;
+    margin-bottom: 0px;
 
+}
+
+hr{
+    margin: 0px;
+    color: black;
 }
 
 .tool-btn{
@@ -71,7 +81,7 @@ a{
     border: 0;
     border-radius: 5px;
     background-color: white;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .tool-btn:hover{
@@ -80,13 +90,15 @@ a{
 
 #delete{
     margin-left: 15px;
-    border-radius: 7px;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
     border: 0px;
-
-    color: white;
-    background-color: red;
-    font-size: 16px;
+    text-align: center;
     cursor: pointer;
+    background-color: red;
+    color: white;
+    font-size: 16px;
 }
 
 #delete:hover{
@@ -158,3 +170,62 @@ input:focus-visible{
     border: 1px black dashed;
     border-radius: 7px;
 }
+
+.middle{
+    margin: 0px;
+    padding-top: 20px;
+    background-color: rgb(242, 242, 242);
+}
+
+.left{
+    margin: 0 5%;
+    width: 60%;
+
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.right{
+    background-color: white;
+}
+
+div .template{
+    margin: 30px 20%;
+    width: 60%;
+    height: 100px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    text-align: center;
+    cursor: pointer;
+}
+
+div .template:hover{
+    background-color: rgb(225, 224, 224);
+}
+
+.template span{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.template img{
+    vertical-align: middle;
+}
+
+.text-icon, .img-icon{
+    margin: auto;
+}
+
+select, input, label{
+    margin: auto 0px;
+    height: 30px;
+}
+
+button{
+    margin: auto 0px;
+    cursor: pointer;
+}
+

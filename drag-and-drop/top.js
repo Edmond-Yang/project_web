@@ -61,11 +61,11 @@ function initial_btn_function_imgonly(id){
     <button class="tool-btn img-simple-btn" id="end"><img src="./align-right.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>\
 \
     <!-- font -->\
-    <p style="margin: auto 0px; margin-right: 10px;margin-top: 9px;"><strong>WIDTH</strong></p>\
+    <p style="margin: auto 0px; margin-right: 10px;"><strong>WIDTH</strong></p>\
     <input type="number" class="img-value-btn" id="width">\
     <p style="margin: auto 0px; margin-left: 5px; margin-right: 15px; ">px</p>\
 \
-    <p style="margin: auto 0px; margin-right: 10px;margin-top: 9px;"><strong>HEIGHT</strong></p>\
+    <p style="margin: auto 0px; margin-right: 10px;"><strong>HEIGHT</strong></p>\
     <input type="number" class="img-value-btn" id="height">\
     <p style="margin: auto 0px; margin-left: 5px; margin-right: 15px;">px</p>\
     <label class="btn btn-info"><input type="file" id="photo"><div class="photo">上傳圖片</div></label>\
