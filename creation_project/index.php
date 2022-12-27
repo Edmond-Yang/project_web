@@ -174,7 +174,15 @@
         
         <div class="create-project">
             <div class="substitution">
-
+                <div>
+                    <p class="word" style="-webkit-text-stroke: 1px red; margin-top: 20px;">CREATE YOUR OWN PROJECT</p>
+                </div>
+                <div>
+                    <p class="word" style="-webkit-text-stroke: 1px green;">CREATE YOUR OWN PROJECT</p>
+                </div>
+                <div>
+                    <p class="word" style="-webkit-text-stroke: 1px blue;">CREATE YOUR OWN PROJECT</p>
+                </div>
             </div>
             
             <button id="create">CREATE PROJECT</button>

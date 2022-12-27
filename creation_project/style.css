@@ -54,6 +54,8 @@ a{
     border: 1px solid black;
     border-radius: 8px;
 
+    justify-content: space-between;
+
     margin: 20px 10%;
 }
 
@@ -155,6 +157,7 @@ table{
     border-radius: 5px;
     background-color: red;
     color: white;
+    cursor: pointer;
 }
 
 .delete:hover{
@@ -171,3 +174,12 @@ table{
 .project:hover{
     text-decoration: underline;
 }
+
+.word{
+    color: white;
+    -webkit-text-stroke: 1px black;
+    font-size: 38px;
+    margin-top: 0px;
+    margin-left: 80px;
+}
+
