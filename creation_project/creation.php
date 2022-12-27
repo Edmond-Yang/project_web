@@ -1,6 +1,6 @@
 <?php 
 
-    if(!isset($_POST['email']) || !isset($_POST['image'])){
+    if(!isset($_POST['email']) || !isset($_POST['image']) || !isset($_POST['password'])){
         echo 'hello';
         // header('Location: http://localhost/project_web/creation_project/index.php');
         exit();
@@ -38,6 +38,7 @@
                     <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
                     <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
                     <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
+                    <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                     <td><button class="project">' . $row['name'] . '</button></td>
                 </form>
                 <td>' . $row['modify_time'] . '</td>
@@ -56,6 +57,7 @@
                         <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
                         <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
                         <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
+                        <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
                     <td><button class="project">' . $row['name'] . '</button></td>
                     </form>
                     <td>' . $row['modify_time'] . '</td>
@@ -74,7 +76,7 @@
                     node.addEventListener("click", function(event){
                         event.preventDefault();
                         var id = node.id.split("-")[2];
-                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(), "image": ' . $_POST['image'] .'},function(text){
+                        $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(), "image": ' . $_POST['image'] .', password: ' . $_POST['password'] . '},function(text){
                             if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
                                 alert(text);
                                 return;

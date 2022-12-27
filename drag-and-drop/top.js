@@ -32,7 +32,7 @@ function initial_btn_function_textonly(id){
       <p style="margin: auto 0px; margin-right: 5px;"><strong>HIGHLIGHT</strong></p>\
       <input class="value-btn" id="backColor" type="color">\
 \
-      <button id="delete" class="text" style="margin-left: 25px;">DELETE</button>\
+      <button id="delete" class="text" style="margin-left: 25px;">刪除</button>\
 \
     ')
 
@@ -68,8 +68,8 @@ function initial_btn_function_imgonly(id){
     <p style="margin: auto 0px; margin-right: 10px;margin-top: 9px;"><strong>HEIGHT</strong></p>\
     <input type="number" class="img-value-btn" id="height">\
     <p style="margin: auto 0px; margin-left: 5px; margin-right: 15px;">px</p>\
-    <input type="file" id="photo">\
-    <button id="delete" class="img">DELETE</button>\
+    <label class="btn btn-info"><input type="file" id="photo"><div class="photo">上傳圖片</div></label>\
+    <button id="delete" class="img">刪除</button>\
     ')
     // console.log(id);
     $('#img_'+id).on('load', function(){
@@ -150,11 +150,6 @@ function initial_btn_function_img(id){
 }
 
 window.onload = function(){
-
-    $('body').on('click', function(){
-        if($('.user-list').css('display') == 'block')
-            $('.user-list').css('display', 'none');
-    })
     
     $('#user').on('click', function(){
         

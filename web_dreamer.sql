@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-12-25 16:32:09
+-- 產生時間： 2022-12-27 06:09:27
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -42,19 +42,23 @@ CREATE TABLE `a@gmail.com` (
 
 CREATE TABLE `account` (
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `image` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `account`
 --
 
-INSERT INTO `account` (`email`, `password`) VALUES
-('ggu@gmail.com', '11049090'),
-('bao@gmail.com', '11111111'),
-('tt@gmail.com', '11111111'),
-('qq@gmail.com', '11111111'),
-('a@gmail.com', '11111111');
+INSERT INTO `account` (`email`, `password`, `image`) VALUES
+('ggu@gmail.com', '11049090', 0),
+('bao@gmail.com', '11111111', 0),
+('tt@gmail.com', '11111111', 0),
+('qq@gmail.com', '11111111', 0),
+('a@gmail.com', '11111111', 0),
+('r@gmail.com', '00000000', 0),
+('t@gmail.com', '11111111', 2),
+('dudu1234@gmail.com', '00000000', 3);
 
 -- --------------------------------------------------------
 
@@ -68,6 +72,27 @@ CREATE TABLE `bao@gmail.com` (
   `html` longtext NOT NULL,
   `modify_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `dudu1234@gmail.com`
+--
+
+CREATE TABLE `dudu1234@gmail.com` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `html` longtext NOT NULL,
+  `modify_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `dudu1234@gmail.com`
+--
+
+INSERT INTO `dudu1234@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
+(1, 'default', '', '2022-12-26 13:31:14'),
+(2, 'default', '', '2022-12-26 15:48:55');
 
 -- --------------------------------------------------------
 
@@ -87,7 +112,7 @@ CREATE TABLE `ggu@gmail.com` (
 --
 
 INSERT INTO `ggu@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
-(1, 'default', '', '2022-12-25 15:08:49');
+(13, 'default', '', '2022-12-26 10:53:29');
 
 -- --------------------------------------------------------
 
@@ -109,6 +134,41 @@ CREATE TABLE `qq@gmail.com` (
 INSERT INTO `qq@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
 (8, 'default', '', '2022-12-25 14:46:26'),
 (9, 'default', '', '2022-12-25 14:51:55');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `r@gmail.com`
+--
+
+CREATE TABLE `r@gmail.com` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `html` longtext NOT NULL,
+  `modify_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `t@gmail.com`
+--
+
+CREATE TABLE `t@gmail.com` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `html` longtext NOT NULL,
+  `modify_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `t@gmail.com`
+--
+
+INSERT INTO `t@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
+(2, 'default', '', '2022-12-26 12:17:44'),
+(6, 'default', '', '2022-12-26 12:33:20'),
+(8, 'default', '', '2022-12-26 12:37:25');
 
 -- --------------------------------------------------------
 
@@ -140,6 +200,12 @@ ALTER TABLE `bao@gmail.com`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `dudu1234@gmail.com`
+--
+ALTER TABLE `dudu1234@gmail.com`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `ggu@gmail.com`
 --
 ALTER TABLE `ggu@gmail.com`
@@ -149,6 +215,18 @@ ALTER TABLE `ggu@gmail.com`
 -- 資料表索引 `qq@gmail.com`
 --
 ALTER TABLE `qq@gmail.com`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `r@gmail.com`
+--
+ALTER TABLE `r@gmail.com`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `t@gmail.com`
+--
+ALTER TABLE `t@gmail.com`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -174,15 +252,33 @@ ALTER TABLE `bao@gmail.com`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `dudu1234@gmail.com`
+--
+ALTER TABLE `dudu1234@gmail.com`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `ggu@gmail.com`
 --
 ALTER TABLE `ggu@gmail.com`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `qq@gmail.com`
 --
 ALTER TABLE `qq@gmail.com`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `r@gmail.com`
+--
+ALTER TABLE `r@gmail.com`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `t@gmail.com`
+--
+ALTER TABLE `t@gmail.com`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
