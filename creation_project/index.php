@@ -65,78 +65,6 @@
         echo "<script>document.querySelector('#btn').click();</script>";
         exit();
     }
-
-    function refresh_project(){
-        $result = mysqli_query($GLOBALS['database'], "SELECT id, name, modify_time FROM `" . $_POST['email'] . "`");
-
-                if(!($row = mysqli_fetch_assoc($result))){
-                    echo '<p style="color: grey; font-size:13px; text-align: center;">尚未有任何專案</p>';
-                }
-                else{
-                    echo '<table style="text-align: center; border-spacing: 0px; table-layout:fixed;">
-                        <col style="width: 60%;" />
-                        <col style="width: 10%;" />
-                        <col style="width: 10%;" />
-                        <tr>
-                            <th>專案名稱</th>
-                            <th>上次修改時間</th>
-                            <th>刪除該專案</th>
-                        </tr>';
-                    echo '<tr>
-                            <form method="POST" action="">
-                                <input type="text" style="display: none;" value="' . $_POST['email'] .'" name="email">
-                                <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
-                                <input type="text" style="display: none;" value="' . $row['id'] .'" name="project">
-                                <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
-                                <td><button class="project">' . $row['name'] . '</button></td>
-                            </form>
-                            <td>' . $row['modify_time'] . '</td>
-                            <form>
-                                <input type="text" style="display: none;" id="email-user-' . $row['id'] .'" value="' . $_POST['email'] .'" name="email">
-                                <input type="text" style="display: none;" id="project-user-' . $row['id'] .'" value="' . $row['id'] .'" name="project">
-                                <td><button id="project-deletion-' . $row['id'] . '" class="delete">刪除</button></td>
-                            </form>
-                        </tr>';
-                }
-
-                while($row = mysqli_fetch_assoc($result)){
-                    echo '<tr>
-                            <form method="POST" action="">
-                                <input type="text" style="display: none;"  value="' . $_POST['email'] .'" name="email">
-                                <input type="text" style="display: none;" value="' . $_POST['password'] .'" name="password">
-                                <input type="text" style="display: none;"  value="' . $row['id'] .'" name="project">
-                                <input type="text" style="display: none;" value="' . $GLOBALS['image'] .'" name="image">
-                                <td><button class="project">' . $row['name'] . '</button></td>
-                            </form>
-                            <td>' . $row['modify_time'] . '</td>
-                            <form>
-                                <input type="text" style="display: none;" id="email-user-' . $row['id'] .'" value="' . $_POST['email'] .'" name="email">
-                                <input type="text" style="display: none;" id="project-user-' . $row['id'] .'" value="' . $row['id'] .'" name="project">
-                                <input type="text" style="display: none;" id="image" value="' . $GLOBALS['image'] .'" name="image">
-                                <td><button id="project-deletion-' . $row['id'] . '" class="delete">刪除</button></td>
-                            </form>
-                        </tr>';
-                }
-
-                echo '</table>';
-                echo '<script>
-                        document.querySelectorAll(".delete").forEach(function(node){
-                            node.addEventListener("click", function(event){
-                                event.preventDefault();
-                                var id = node.id.split("-")[2];
-                                consol.log($("#image").val());
-                                $.post("deletion.php", {"email": $("#email-user-" + id).val(), "project": $("#project-user-" + id).val(),"image": ' . $GLOBALS['image'] .', "password": ' . $_POST['password'] . '},function(text){
-                                    if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
-                                        alert(text);
-                                        return;
-                                    }
-
-                                    $("#project").html(text);
-                                })
-                            })
-                        })
-                    </script>';
-    }
     
 ?>
 
@@ -150,6 +78,20 @@
         <link rel="stylesheet" href="./style.css">
         <link rel="icon" href="../logo/icon.PNG">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script>
+            const fresh_project = function (){
+                $.post('query.php', 
+                    {email: "<?php echo $_POST['email']?>", password: "<?php echo $_POST['password']?>", image: <?php echo $image?>}, 
+                    function(text){
+                        if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
+                            alert(text);
+                            return;
+                        }
+
+                        $("#project").html(text);
+                })
+            }
+        </script>
         <script src="./control.js"></script>
     </head>
     <body>
@@ -190,9 +132,11 @@
                 echo '<script> $(\'#create\').click(function(){
                     event.preventDefault();
                     $.post(\'creation.php\', {email:\'' . $_POST['email'] .'\', image: ' . $image .', "password": ' . $_POST['password'] . '}, function(text){
-                        
-                            $(\'#project\').html(text)
-                            // convert to t3.html ...
+                            if(text.includes("xampp") && !text.includes("text.includes(\"xampp\")")){
+                                alert("Error Occur. Please Contact Engineer.");
+                                return;
+                            }
+                            fresh_project();
                     })
                 })</script>';
             ?>
@@ -201,11 +145,6 @@
             <h1>你的專案</h1>
         </div>
         <div class="project-list" id="project">
-            
-            <?php
-                refresh_project();
-            ?>
-            <!-- php -->
         </div>
         
         

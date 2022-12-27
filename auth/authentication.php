@@ -4,7 +4,7 @@
     $password = $_POST["password"];
     $password_confirm = $_POST["password_confirm"];
 
-    if (!($database = mysqli_connect("localhost", "admin", "WEB#dreamer$1104&1126", "web_dreamer"))) {
+    if (!($database = mysqli_connect("localhost", "root", "", "web_dreamer"))) {
         die("Connection failed.");
     }
 
