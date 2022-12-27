@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   tool.set_item_to_int("block_id");
 
 });
+
 function add_template_event(){
 
   let items = document.getElementsByClassName("template"), current = null;
@@ -128,8 +129,10 @@ function add_block_event(){
         current.appendChild(input);
         current.id = num +"_imageonly";
 
-        input.addEventListener("change", function() {
-
+        input.addEventListener("change", function(ev) {
+          
+          console.log(ev.target.files);
+          console.log(ev.target.files[0]);
           const reader = new FileReader()
         
           reader.addEventListener("load", () => {
@@ -162,6 +165,7 @@ function add_block_event(){
         
           reader.readAsDataURL(this.files[0])
           initial_btn_function_imgonly(num+'_imageonly');
+
         })
 
         initial_btn_function_imgonly(num+'_imageonly');
