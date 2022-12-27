@@ -66,7 +66,7 @@ window.onload = function(){
             }
             $.post('authentication.php', {status: 'signup', email: email, password: password, password_confirm:confirmed_password}, function(text){
                 if(text.includes('xampp')){
-                    alert('Error Occur. Please Contact Our Engineer');
+                    alert(text);
                     return;
                 }
                 
