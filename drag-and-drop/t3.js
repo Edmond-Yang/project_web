@@ -131,11 +131,12 @@ function add_block_event(){
 
         input.addEventListener("change", function(ev) {
           
-          console.log(ev.target.files);
-          console.log(ev.target.files[0]);
+          // console.log(ev.target.files);
+          // console.log(ev.target.files[0]);
           const reader = new FileReader()
         
           reader.addEventListener("load", () => {
+
             //document.querySelector("#image").src = reader.result
             let parent = input.parentElement;
             parent.removeChild(input);
@@ -198,6 +199,7 @@ function add_block_event(){
         
           reader.addEventListener("load", () => {
             //document.querySelector("#image").src = reader.result
+            console.log(num);
             let parent = input.parentElement;
             parent.removeChild(input);
             let image = document.createElement("img");
@@ -270,6 +272,7 @@ function add_block_event(){
           const reader = new FileReader()
           
           reader.addEventListener("load", () => {
+
             //document.querySelector("#image").src = reader.result
             let parent = input.parentElement;
             parent.removeChild(input);
@@ -318,79 +321,6 @@ function add_block_event(){
     }
   }
 }
-// if(document.getElementById(this.id).children.length <= 1)
-            
-// else if(document.getElementById(this.id).children.length > 1){
-//   initial_btn_function_imgonly(this.id);
-//   console.log(num+"_text");
-//   console.log(document.getElementById(num+"_text"));
-//   document.getElementById(num+"_text").addEventListener("click",function(){
-//     initial_btn_function_textonly();
-//   })
-// }
-// function add_image_event(node){
-
-//   let current = node.getElementsByClassName("image_block")[0];
-//   current.draggable = "true";
-//   current.ondragstart = (ev) =>{
-
-//     let image_child_l = document.createElement("div");
-//     let image_child_r = document.createElement("div");
-//     image_child_l.classList.add("filling_block");
-//     image_child_r.classList.add("filling_block");
-//     image_child_l.classList.add("hint");
-//     image_child_r.classList.add("hint");
-//     node.insertBefore(image_child_l,current);
-//     node.insertBefore(image_child_r,current.nextSibling);
-
-//     // add_image_event_2(node,current);
-//   };
-// }
-
-// function add_image_event_2(node,current){
-//   let children = node.children;
-  
-//   for(var i=0;i<children.length;i++){
-//     children[i].ondragenter = (ev) =>{
-//       ev.target.classList.add("active");
-//     };
-//     children[i].ondragleave = (ev) =>{
-//       ev.target.classList.remove("active");
-//     };
-//     children[i].ondragover = (ev) =>{
-//       ev.preventDefault();
-//     };
-//     children[i].ondragend = () =>{
-//       for(var j=0;j<children.length;j++){
-//         children[j].classList.remove("hint");
-//         children[j].classList.remove("active");
-//         if(children[j].className.includes("filling_block")){
-//           children[j].remove();
-//         }
-//       }
-//     };
-//     children[i].ondrop = (ev) =>{
-//       ev.preventDefault();
-
-//       if(children[i]!=current){
-//         let currentpos=0,droppedpos=0;
-//         for(let it=0;it<children.length;it++){
-//           if(current == children[it]) currentpos = it;
-//           if(children[i] == children[it]) droppedpos = it;
-//         }
-//         console.log(currentpos);
-//         console.log(droppedpos);
-//         if(currentpos < droppedpos){
-//          node.insertBefore(current,children[i].nextSibling);
-//         }
-//         else{
-//           node.insertBefore(current,children[i]);
-//         }
-        
-//       }
-//     };
-//   }
-// }
 
 
   

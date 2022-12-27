@@ -71,7 +71,7 @@ function initial_btn_function_imgonly(id){
     <label class="btn btn-info"><input type="file" id="photo"><div class="photo">上傳圖片</div></label>\
     <button id="delete" class="img">刪除</button>\
     ')
-    // console.log(id);
+
     $('#img_'+id).on('load', function(){
         $('#width').val($('#img_'+id).width());
         $('#height').val($('#img_'+id).height());
@@ -95,59 +95,67 @@ function initial_btn_function_imgonly(id){
             $('#'+id).children().children().children().attr(node.id, node.value);
         })
     })
-    // console.log($('button.img'));
 
     $('button.img').click(function(){
         $('#'+id).remove();
     })
-    
-}
 
+    var input = document.getElementById("photo");
+    var num = id.slice(0,1);
 
-function initial_btn_function_img(id){
-    
-    $('#tool-bar').html('\
-    <!-- align -->\
-    <button class="tool-btn img-simple-btn" id="start"><img src="./align-left.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>\
-    <button class="tool-btn img-simple-btn" id="center"><img src="./align-center.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>\
-    <button class="tool-btn img-simple-btn" id="end"><img src="./align-right.PNG" style="width: 23px; height: 23px; margin: 3px;"></button>\
-\
-    <!-- font -->\
-    <p style="margin: auto 0px; margin-right: 10px;margin-top: 9px;"><strong>WIDTH</strong></p>\
-    <input type="number" class="img-value-btn" id="width">\
-    <p style="margin: auto 0px; margin-left: 5px; margin-right: 15px; ">px</p>\
-\
-    <p style="margin: auto 0px; margin-right: 10px;margin-top: 9px;"><strong>HEIGHT</strong></p>\
-    <input type="number" class="img-value-btn" id="height">\
-    <p style="margin: auto 0px; margin-left: 5px; margin-right: 15px;">px</p>\
-    <input type="file" id="photo">\
-    <button id="delete">DELETE</button>\
-    ')
-    // console.log(id);
-    $('#img_'+id).on('load', function(){
-        $('#width').val($('#img_'+id).width());
-        $('#height').val($('#img_'+id).height());
-    })
+    input.addEventListener("change", function() {
 
-    if($('#img_'+id).width() && $('#img_'+id).height()){
-        $('#width').val($('#img_'+id).width());
-        $('#height').val($('#img_'+id).height());
-    }
-  
-    document.querySelectorAll('.img-simple-btn').forEach(function(node){
-        node.addEventListener('click', function(){
-            $('#'+id).children().css('justify-content', node.id);
-            
-        })
+        const reader = new FileReader()
+        // console.log("here");
+        reader.addEventListener("load", () => {
+
+        let parent = document.getElementById(id);
+        let children = parent.querySelectorAll('input')[0];
         
-    })
+        if(!children){
+            let image = document.getElementById("img_"+id);
+            image.src = reader.result;
+        }
+        else{
+            parent.removeChild(children);
+            let image = document.createElement("img");
+            image.ondragstart = (ev) =>{
+                ev.preventDefault();
+            }
+            let image_parent = document.createElement("div");
+            let image_child_l = document.createElement("div");
+            
+            image_parent.classList.add("block_image");
+            image_child_l.classList.add("image_block");
+            // image_parent.id = num + "_image";
 
-    document.querySelectorAll('.img-value-btn').forEach(function(node){
-        node.addEventListener('change', function(){
-            $('#'+id).children().children().children().attr(node.id, node.value);
+            image.width = "200";
+            image.class = "input_img";
+            image.id="img_" + num + '_imageonly';
+            image.src = reader.result;
+            image_child_l.appendChild(image);
+            image_parent.appendChild(image_child_l);
+
+            if(parent.children.length > 0)
+                parent.insertBefore(image_parent,parent.children[0]);
+            else
+                parent.appendChild(image_parent);
+
+            image_parent.addEventListener("click",function(){
+                initial_btn_function_imgonly(num+'_imageonly');
+            })
+        }
+        
+
+          initial_btn_function_imgonly(num+'_imageonly');
+          // add_image_event(image_parent);
         })
-    })
+      
+        reader.readAsDataURL(this.files[0])
+
+      })
 }
+
 
 window.onload = function(){
     

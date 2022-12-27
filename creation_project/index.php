@@ -8,7 +8,7 @@
     $email =  $_POST["email"];
     $password = $_POST["password"];
 
-    if (!($database = mysqli_connect("localhost", "admin", "WEB#dreamer$1104&1126", "web_dreamer"))) {
+    if (!($database = mysqli_connect("localhost", "root", "", "web_dreamer"))) {
         echo "<form method=\"POST\" action=\"../auth/auth.php\">
         <input type=\"text\" value=\"Database Connection Error\" name=\"error_msg\">
         <button id=\"btn\"></button>
