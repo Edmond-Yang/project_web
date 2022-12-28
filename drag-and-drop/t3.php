@@ -8,9 +8,8 @@ if (isset($_POST['upload'])) {
 
 	$filename = $_FILES["uploadfile"]["name"];
 	$tempname = $_FILES["uploadfile"]["tmp_name"];
-	$folder = "./image/" . $filename;
-	echo($filename)."<br></br>";
-  echo($tempname)."<br></br>";
+	$folder = "../image/" . $filename;
+	
 	
   if(!$db = mysqli_connect("localhost", "root", "", "web_dreamer")){
     die('No connection: ' . mysqli_connect_error());
@@ -19,11 +18,7 @@ if (isset($_POST['upload'])) {
 	$sql = "INSERT INTO image (filename,projectid,blockid) VALUES ('$filename',1,2)";
 
 	// Execute query
-	if(!mysqli_query($db, $sql)){
-    echo "fail<br></br>";
-  }
-  else
-    echo "success<br></br>";
+	mysqli_query($db, $sql);
 
 	// Now let's move the uploaded image into the folder: image
 	if (move_uploaded_file($tempname, $folder)) {
