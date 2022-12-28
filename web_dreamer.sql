@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-12-27 06:09:27
+-- 產生時間： 2022-12-28 05:05:32
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -37,6 +37,27 @@ CREATE TABLE `a@gmail.com` (
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `ab@gmail.com`
+--
+
+CREATE TABLE `ab@gmail.com` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `html` longtext NOT NULL,
+  `modify_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `ab@gmail.com`
+--
+
+INSERT INTO `ab@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
+(2, 'default', '', '2022-12-27 13:44:49'),
+(3, 'default', '', '2022-12-27 13:44:52');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `account`
 --
 
@@ -58,7 +79,8 @@ INSERT INTO `account` (`email`, `password`, `image`) VALUES
 ('a@gmail.com', '11111111', 0),
 ('r@gmail.com', '00000000', 0),
 ('t@gmail.com', '11111111', 2),
-('dudu1234@gmail.com', '00000000', 3);
+('dudu1234@gmail.com', '00000000', 3),
+('ab@gmail.com', '12345678', 0);
 
 -- --------------------------------------------------------
 
@@ -113,6 +135,50 @@ CREATE TABLE `ggu@gmail.com` (
 
 INSERT INTO `ggu@gmail.com` (`id`, `name`, `html`, `modify_time`) VALUES
 (13, 'default', '', '2022-12-26 10:53:29');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `image`
+--
+
+CREATE TABLE `image` (
+  `email` text DEFAULT NULL,
+  `projectid` int(11) DEFAULT NULL,
+  `blockid` int(11) DEFAULT NULL,
+  `filename` varchar(50) DEFAULT NULL,
+  `path` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `image`
+--
+
+INSERT INTO `image` (`email`, `projectid`, `blockid`, `filename`, `path`) VALUES
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp6E29.tmp'),
+(NULL, 1, 2, 'm.jpg', 'C:xampp	mpphp8F4E.tmp'),
+(NULL, 1, 2, 'm.jpg', 'C:xampp	mpphpF8D7.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp2864.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphpADA9.tmp'),
+(NULL, 1, 2, 'o.jpg', 'C:xampp	mpphp3D77.tmp'),
+(NULL, 1, 2, 'o.jpg', 'C:xampp	mpphpFFA.tmp'),
+(NULL, 1, 2, 'the_scream.jpg', 'C:xampp	mpphp3229.tmp'),
+(NULL, 1, 2, 'the_scream.jpg', 'C:xampp	mpphp843.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp4C81.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphpCEB2.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphpFAC4.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp350F.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp771A.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphp88A0.tmp'),
+(NULL, 1, 2, 'm.jpg', 'C:xampp	mpphpB176.tmp'),
+(NULL, 1, 2, 'm.jpg', 'C:xampp	mpphp189D.tmp'),
+(NULL, 1, 2, 'o.jpg', 'C:xampp	mpphp3B78.tmp'),
+(NULL, 1, 2, 'o.jpg', 'C:xampp	mpphp82BE.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', 'C:xampp	mpphpA645.tmp'),
+(NULL, 1, 2, 'tubingen.jpg', NULL),
+(NULL, 1, 2, 'tubingen.jpg', NULL),
+(NULL, 1, 2, 'tubingen.jpg', NULL),
+(NULL, 1, 2, 'o.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -194,6 +260,12 @@ ALTER TABLE `a@gmail.com`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `ab@gmail.com`
+--
+ALTER TABLE `ab@gmail.com`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `bao@gmail.com`
 --
 ALTER TABLE `bao@gmail.com`
@@ -244,6 +316,12 @@ ALTER TABLE `tt@gmail.com`
 --
 ALTER TABLE `a@gmail.com`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `ab@gmail.com`
+--
+ALTER TABLE `ab@gmail.com`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `bao@gmail.com`

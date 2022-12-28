@@ -122,12 +122,14 @@ function add_block_event(){
         })
       }
       else if(ev.dataTransfer.getData("type")=="image-only"){
-        let input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
-        input.name = "img";
-        current.appendChild(input);
         current.id = num +"_imageonly";
+        
+        $("#"+num +"_imageonly").html('<form method="POST" action="" enctype="multipart/form-data">\
+        <input type="file" accept="image/*" name="uploadfile" id="uploadfile">\
+        <button type="submit" name="upload">UPLOAD</button></form>')
+
+        var input = document.getElementById("uploadfile");
+
 
         input.addEventListener("change", function(ev) {
           
@@ -139,7 +141,8 @@ function add_block_event(){
 
             //document.querySelector("#image").src = reader.result
             let parent = input.parentElement;
-            parent.removeChild(input);
+            input.style.display = "none";
+            //parent.removeChild(input);
             let image = document.createElement("img");
             image.ondragstart = (ev) =>{
               ev.preventDefault();
@@ -199,7 +202,7 @@ function add_block_event(){
         
           reader.addEventListener("load", () => {
             //document.querySelector("#image").src = reader.result
-            console.log(num);
+
             let parent = input.parentElement;
             parent.removeChild(input);
             let image = document.createElement("img");

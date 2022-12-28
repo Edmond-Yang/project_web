@@ -1,3 +1,39 @@
+<?php
+error_reporting(0);
+
+$msg = "";
+
+// If upload button is clicked ...
+if (isset($_POST['upload'])) {
+
+	$filename = $_FILES["uploadfile"]["name"];
+	$tempname = $_FILES["uploadfile"]["tmp_name"];
+	$folder = "./image/" . $filename;
+	echo($filename)."<br></br>";
+  echo($tempname)."<br></br>";
+	
+  if(!$db = mysqli_connect("localhost", "root", "", "web_dreamer")){
+    die('No connection: ' . mysqli_connect_error());
+  }
+	// Get all the submitted data from the form
+	$sql = "INSERT INTO image (filename,projectid,blockid) VALUES ('$filename',1,2)";
+
+	// Execute query
+	if(!mysqli_query($db, $sql)){
+    echo "fail<br></br>";
+  }
+  else
+    echo "success<br></br>";
+
+	// Now let's move the uploaded image into the folder: image
+	if (move_uploaded_file($tempname, $folder)) {
+		echo "<h3> Image uploaded successfully!</h3>";
+	} else {
+		echo "<h3> Failed to upload image!</h3>";
+	}
+
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
